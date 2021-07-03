@@ -7,7 +7,7 @@ import './static/scss/base.scss';
 ReactDOM.render(
   <React.StrictMode>
     <div>
-      <Homepage nome = 'Matheus' />
+      <Homepage/>
 
     </div>
   </React.StrictMode>,
