@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './components/header';
 import Footer from './components/footer';
 
+import PriceHistoryChart from './components/graph';
+
 
 class Homepage extends React.Component {
     render() {
@@ -14,11 +16,11 @@ class Homepage extends React.Component {
                         <div className="widget1" style={{background: 'yellow'}}></div>
                     </aside>
                     <main className="feed__products">
-                        <div className="widget" style={{background: 'yellow'}}></div>
-                        <div className="widget" style={{background: 'yellow'}}></div>
-                        <div className="widget" style={{background: 'yellow'}}></div>
-                        <div className="widget" style={{background: 'yellow'}}></div>
-                        <div className="widget" style={{background: 'yellow'}}></div>
+                        <PriceHistoryChart />
+                        <div className="product-list">
+                            <div className="widget" style={{background: 'yellow'}}></div>
+                            <div className="widget" style={{background: 'yellow'}}></div>
+                        </div>
                     </main>
                 </div>
             </div>
