@@ -4,10 +4,15 @@ import Homepage from './pages/home';
 import './static/scss/base.scss';
 
 
+import Header from './pages/components/header';
+import Footer from './pages/components/footer';
+
 ReactDOM.render(
   <React.StrictMode>
     <div>
-      <Homepage/>
+      <Header />
+      <Homepage />
+      <Footer />
 
     </div>
   </React.StrictMode>,
