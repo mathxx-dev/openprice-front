@@ -1,4 +1,10 @@
+// ARQUIVO SASS ONDE AS CORES FICAM
+@import './definitions/colors.scss';
+
+// SIMPLE RESET DO SASS
 @import './reset.scss';
+
+// COMPONENTES DO SITE
 @import './components/header.scss';
 @import './pages/home.scss';
 @import './components/footer.scss';
