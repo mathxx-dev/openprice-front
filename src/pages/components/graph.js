@@ -9,10 +9,10 @@ class PriceHistoryChart extends Component {
         this.state = {
             series: [{
                 name: "Preço",
-                data: [5085, 5085, 5443, 4659, 3008, 5384, 5384, 5384, 5384, 5993, 3343, 3413, 3158, 5194, 3986, 2683, 3125, 3641, 4831]
+                data: this.props.valores
             }],
             options: {
-                labels: ["1/07", "2/07", "3/07", "4/07", "5/07", "6/07", "7/07", "8/07", "9/07", "10/07", "11/07", "12/07", "13/07", "14/07", "15/07", "16/07", "17/07", "18/07", "19/07"],
+                labels: this.props.labels,
 
                 xaxis: {
                     type: 'string',

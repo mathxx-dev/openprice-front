@@ -1,132 +1,112 @@
+
 .navbar {
-    background-color: #CBCCD1;
-    height: 112px;
-    width: 100%;
+    min-height: 112px;
+    background-color: $widgets;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 
-    .titleheader {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        height: 69px;
-        padding: 0px 20px;
+    box-shadow: 0px -43px 0px $details inset;
+    box-sizing: border-box;
 
-        .social {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 0px;
-            position: static;
-            width: 264px;
+    .header {
+        width: 100%;
+        max-width: 1000px;
+
+        &__title {
             height: 69px;
-            left: 693px;
-            top: 0px;
-            flex: none;
-            order: 1;
-            flex-grow: 0;
-            margin: 0px 10px;
-            gap: 20px;
-
-            &-icon {
-                width: 27px;
-                height: 27px;
-
-                order: 2;
-                margin: 0px 5px;
-            }
-        }
-        .title {
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 0px;
 
-            position: static;
-            width: 118px;
-            height: 39px;
-            left: 20px;
-            top: 15px;
-
-            flex: none;
-            order: 0;
-            flex-grow: 0;
-            margin: 0px 10px;
-
-            &-text {
-                position: static;
-                width: 70px;
-                height: 16px;
-                left: 48px;
-                top: 11.5px;
-                
-                font-family: -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                font-style: normal;
-                font-weight: bold;
-                font-size: 18px;
-                line-height: 16px;
+            .title-header {
                 display: flex;
+                flex-direction: row;
+                justify-content: space-between;
                 align-items: center;
-                text-align: center;
-                
-                /* Black */
-                color: #4C505E;
-                
-                flex: none;
-                order: 1;
-                flex-grow: 0;
-                margin: 0px 10px; 
-            }
-        }
-    }
-    .subheader {
-        background-color: #c1c2c7;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 0px;
-        height: 43px;
+                width: 100%;
 
-        .header-button {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            padding: 0px;
-            width: 43px;
-            height: 43px;
-            background: #C1C2C7;
+                &__logo {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
-            flex: none;
-            order: 5;
-            align-self: stretch;
-            flex-grow: 0;
-            margin: 0px 0px;
+                    outline: none;
+                    text-decoration: none;
 
-            &-icon{
-                position: static;
-                width: 22px;
-                height: 22px;
+                    .logo-svg {
+                        margin-right: 10px;
+                    }
+    
+                    .logo-text {
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: $black;
 
-                flex: none;
-                order: 0;
-                flex-grow: 0;
-                margin: 0px 10px;
-            }
+                    }
+                }
+                &__social {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
 
-            &:hover{
-                background-color:#4C505E;
-                .header-button-icon {
-                    filter: brightness(100);
+                    svg {
+                        height: 20px;
+                        width: 20px;
+                    }
                 }
             }
         }
-    }
-}
+    
+        &__navigator {
+            height: 43px;
 
-.button-active {
-    background-color:#4C505E !important;
-    .header-button-icon {
-        filter: brightness(100);
+            .navigator {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(6, auto);
+
+                &-button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 43px;
+                    min-width: 43px;
+                    width: auto;
+                    text-decoration: none;
+                    color: $black;
+                    font-weight: 200;
+                    transition: background-color 100ms;
+                    
+                    svg {
+                        height: 20px;
+                        width: 20px;
+                        margin-right: 10px;
+
+                        transition: transform 100ms;
+                    }
+
+                    &.active {
+                        background-color: $black;
+                        color: white;
+
+                        svg {
+                            filter: brightness(100);
+                            transform: scale(1.2);
+                        }
+                    }
+
+                    &:hover {
+                        background-color: $black;
+                        color: white;
+
+                        svg {
+                            filter: brightness(100);
+                            transform: scale(1.2);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
