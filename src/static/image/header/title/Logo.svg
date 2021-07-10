@@ -1,3 +1,12 @@
-<svg width="38" height="39" viewBox="0 0 38 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M18.9789 33.8259L3.42 22.1075L0 24.6843L19 39L38 24.6843L34.5589 22.087L18.9789 33.8259ZM19 28.6314L34.5378 16.913L38 14.3157L19 0L0 14.3157L3.44111 16.913L19 28.6314Z" fill="#4C505E"/>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 39">
+    <defs>
+        <style>
+            .cls-1{fill:#4c505e;}
+        </style>
+    </defs>
+    <title>Logo</title>
+    <path class="cls-1 cls-1--up" d="M19,28.63,34.54,16.91,38,14.32,19,0,0,14.32l3.44,2.59Z"/>
+    <g id="Layer_2" data-name="Layer 2">
+        <polygon class="cls-1 cls-1--down" points="18.98 33.83 3.42 22.11 0 24.68 19 39 38 24.68 34.56 22.09 18.98 33.83"/>
+    </g>
 </svg>

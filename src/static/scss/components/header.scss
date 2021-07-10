@@ -34,14 +34,18 @@
 
                     .logo-svg {
                         margin-right: 10px;
+                        
+                        height: 40px;
+                        width: 40px;
                     }
-    
+                    
                     .logo-text {
                         font-size: 16px;
                         font-weight: bold;
                         color: $black;
-
                     }
+
+
                 }
                 &__social {
                     display: flex;

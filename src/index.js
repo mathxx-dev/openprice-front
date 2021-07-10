@@ -9,12 +9,11 @@ import Footer from './pages/components/footer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <div>
+    <>
       <Header />
       <Homepage />
       <Footer />
-
-    </div>
+    </>
   </React.StrictMode>,
   document.getElementById('root')
 );

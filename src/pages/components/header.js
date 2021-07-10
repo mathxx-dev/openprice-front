@@ -33,12 +33,12 @@ class Header extends React.Component {
                     </div>
                     <div className="header__navigator">
                         <div className = 'navigator'>
-                            <a href="/" className="navigator-button active" ><HomeSVG />Home</a>
-                            <a href="/hardware/processador" className="navigator-button" ><CpuSVG />CPU</a>
-                            <a href="/hardware/placa-de-video" className="navigator-button" ><GpuSVG />GPU</a>
-                            <a href="/perifericos" className="navigator-button" ><KeyboardSVG />Perifericos</a>
-                            <a href="/hardware/placas-mae" className="navigator-button" ><MobaSVG />Placa Mãe</a>
-                            <a href="/hardware/ssd" className="navigator-button" ><SSDSVG />SSD</a>
+                            <a href="/" className="navigator-button active" ><HomeSVG /></a>
+                            <a href="/hardware/processador" className="navigator-button" ><CpuSVG /></a>
+                            <a href="/hardware/placa-de-video" className="navigator-button" ><GpuSVG /></a>
+                            <a href="/perifericos" className="navigator-button" ><KeyboardSVG /></a>
+                            <a href="/hardware/placas-mae" className="navigator-button" ><MobaSVG /></a>
+                            <a href="/hardware/ssd" className="navigator-button" ><SSDSVG /></a>
                         </div>
                     </div>
                 </div>

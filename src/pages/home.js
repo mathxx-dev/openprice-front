@@ -1,53 +1,97 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+// , useContext, useCallback, useReducer,
 
-import PriceHistoryChart from './components/graph';
-import FeedAPI from '../api/feed';
+import FeedItem from './components/feed-item';
+import PriceGraph from './components/graph';
 
-class Homepage extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            valores : [5085, 5085, 5443, 5443, 1008, 5384, 5384, 5384, 5384, 5993],
-            labels : ["1/07", "2/07", "3/07", "4/07", "5/07", "6/07", "7/07", "8/07", "9/07", "10/07"]
+
+
+export default function Homepage () {
+    const [items, setItems] = useState([]);
+    const [graphHistory, setGraphHistory] = useState({
+        ready : false,
+        title: "",
+        origin : "",
+        graph : {
+            values : [],
+            labels : []
         }
-    }
+    });
 
-    componentDidMount () 
-    {
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(process.env.REACT_APP_FEED_ENDPONT, { 
+                method: 'get', 
+                headers: new Headers({
+                  'Authorization': `Token ${process.env.REACT_APP_API_KEY}`, 
+                }), 
+            });
 
+            const data = await response.json();
+
+
+            setItems(data.content);
+        }
+        fetchData();
+    }, []);
+
+    function ShowHistory (item_name, item_origin, history) {
         
+        let values_boleto = [...history].map(c => c.preco_boleto);
+        let values_card = [...history].map(c => c.preco_card);
+
+        let labels = [...history].map(c => c.date);
+
+
+        setGraphHistory({
+            ready: true,
+            title: item_name,
+            origin : item_origin,
+            series_boleto : values_boleto.reverse(),
+            series_cartao : values_card.reverse(),
+            series_labels : labels.reverse()
+        });
     }
 
-    render() {
-        return(
-            <div>
-                <button onClick={() => this.state.feed_controller.call()}>teste</button>
-                <div className="feed">
-                    <aside className="feed__widgets">
-                        <div className="widget1"></div>
-                        <div className="widget1"></div>
-                    </aside>
-                    <main className="feed__products">
-                        <PriceHistoryChart 
-                            valores={this.state.valores} 
-                            labels={this.state.labels}
-                        />
-                        <div className="product-list">
-                            <div className="widget"></div>
-                            <div className="widget"></div>
-                            <div className="widget"></div>
-                            <div className="widget"></div>
-                            <div className="widget"></div>
-                            <div className="widget"></div>
-                            <div className="widget"></div>
-                            <div className="widget"></div>
-                            <div className="widget"></div>
-                        </div>
-                    </main>
-                </div>
+
+    return(
+        <div>
+            <div className="feed">
+                <aside className="feed__widgets">
+                    <div className="widget1"></div>
+                    <div className="widget1"></div>
+                </aside>
+                <main className="feed__products">
+                    {
+                        graphHistory.ready && (
+                            <PriceGraph 
+                                title={graphHistory.title} 
+                                origin={graphHistory.origin} 
+                                seriesBoleto={graphHistory.series_boleto}
+                                seriesCartao={graphHistory.series_cartao}
+                                seriesLabel={graphHistory.series_labels}
+                            />
+                        )
+                    }
+                    
+                    <div className="product-list">
+                        {
+                            items.map(item => (
+                                <div key={item.id} className="product-option" onClick={() => ShowHistory(item.name,item.seller.name,item.history)}>
+                                    <FeedItem
+                                        image={item.img}
+                                        title={item.name}
+                                        origin={item.seller.name}
+                                        price_card={item.history[0].preco_card}
+                                        price_discount={item.history[0].preco_boleto}
+                                    />
+                                </div>
+                            ))
+                        }
+                    </div>
+                </main>
             </div>
-        )
-    }
+        </div>
+    );
 }
-export default Homepage;

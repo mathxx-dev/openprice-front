@@ -1,102 +1,110 @@
-
-import React, { Component } from "react";
+import React, { Fragment, useEffect, useState } from 'react';
 import Chart from "react-apexcharts";
 
-class PriceHistoryChart extends Component {
-    constructor(props) {
-        super(props);
+export default function PriceGraph(props) {
+    const seriesArray = [
+        {
+            name: "Preço",
+            data: [0,0,0]
+        }
+    ];
 
-        this.state = {
-            series: [{
-                name: "Preço",
-                data: this.props.valores
-            }],
-            options: {
-                labels: this.props.labels,
+    const [series, setSeries] = useState(seriesArray);
 
-                xaxis: {
-                    type: 'string',
-                },
-                title: {
-                    text: 'Placa de Vídeo Zotac NVIDIA GeForce RTX 3070 Ti - Kabum',
-                    align: 'left',
-                    style: {
-                        fontSize: '17px',
-                        fontWeight: 'bold',
-                        color: '#4C505E'
-                    },
-                },
-                
-                chart: {
-                    id: "area",
-                    height: 350,
-                    zoom: {
-                        enabled: false
-                    }
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                stroke: {
-                    show: true,
-                    curve: ['smooth'],
-                    lineCap: 'butt',
-                    colors: ['#4C505E'],
-                    width: 4,
-                    dashArray: 0,
-                },
-                markers: {
-                    size: 5,
-                    strokeWidth: 3,
-                    fillOpacity: 1,
-                    shape: "circle",
-                    colors: '#ffffff',
-                    strokeColors: ['#4C505E'],
-                    hover: {
-                        size: 10,
-                        sizeOffset: 1
-                    }
-                },
-                fill: {
-                    opacity: 1,
-                    type: 'gradient',
-                    gradient: {
-                        shade: 'light',
-                        type: "vertical",
-                        shadeIntensity: 0,
-                        inverseColors: true,
-                        colorStops: [
-                            [
-                                {
-                                    opacity: 1,
-                                    offset: 0,
-                                    color: "#4C505E"
-                                },
-                                {
-                                    opacity: 0,
-                                    offset: 100,
-                                    color: "#4C505E"
-                                }
-                            ]
-                        ]
-                    }
-                }
+    const [options, setOptions] = useState({
+        chart: {
+            id: "area",
+            height: 350,
+            zoom: {
+                enabled: false
             }
-        };
-    }
+        },
+        xaxis: {
+            categories: ["1", "2", "3"]
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            show: true,
+            width: [3, 3],
+            curve: 'straight',
+            dashArray: [0, 8],
+            lineCap: 'butt',
+            colors: ["#4C505E", "#AEAEAE"],
+        },
+        markers: {
+            size: 5,
+            strokeWidth: 3,
+            fillOpacity: 0,
+            shape: "circle",
+            colors: ['#ffffff', '#ffffff'],
+            strokeColors: ["#4C505E", "#AEAEAE"],
+            hover: {
+                size: 10,
+                sizeOffset: 1
+            }
+        },
+        legend: {
+            show: true,
+            markers: {
+                width: 12,
+                height: 12,
+                strokeWidth: 0,
+                strokeColor: '#fff',
+                fillColors: undefined,
+                radius: 12,
+            },
+        },
+        tooltip: {
+            style: {
+                fontSize: '12px',
+            },
+            onDatasetHover: {
+                highlightDataSeries: true,
+            }, 
+            marker: {
+                show: false,
+            }
+        }
+    });
 
-    render() {
-        return (
-            <div className="chart-container">
-                <Chart className="chart-object"
-                    type="area"
-                    options={this.state.options}
-                    series={this.state.series}
-                    height="227px"
-                />
-            </div>
-        );
-    }
+    useEffect(() => {
+        const seriesArray = [
+            
+            {
+                name: "Preço Boleto",
+                data: props.seriesCartao
+            },
+            {
+                name: "Preço Cartao",
+                data: props.seriesBoleto
+            }
+    
+        ];
+
+        setSeries(seriesArray);
+
+        let someOptions = {...options, ...{ 
+            title : {
+                text : `${props.title} - ${props.origin}`
+            },
+            xaxis: {
+                categories: props.seriesLabel
+            }
+        }}
+
+        setOptions(someOptions);
+    }, [props]);
+
+    return (
+        <div className="chart-container">
+            <Chart className="chart-object"
+                type="line"
+                options={options}
+                series={series}
+                height={300}
+            />
+        </div>
+    );
 }
-
-export default PriceHistoryChart;
