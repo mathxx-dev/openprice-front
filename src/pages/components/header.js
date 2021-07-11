@@ -22,7 +22,7 @@ class Header extends React.Component {
                         <div className="title-header">
                             <a className="title-header__logo" href="/">
                                 <Logo className="logo-svg" />
-                                <span className="logo-text">OpenPrice</span>
+                                <span className="logo-text">Bloodshell</span>
                             </a>
                             <div className="title-header__social">
                                 <a href="https://www.github.com" ><GithubSVG/></a>

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Chart from "react-apexcharts";
 
 export default function PriceGraph(props) {
@@ -22,8 +22,18 @@ export default function PriceGraph(props) {
         xaxis: {
             categories: ["1", "2", "3"]
         },
+        yaxis: {
+            show: true,
+            labels: {
+                show: true,
+                style: {
+                    colors: ["#ffffff00"],
+                    fontSize: '4px',
+                },
+            }
+        },
         dataLabels: {
-            enabled: false
+            enabled: true
         },
         stroke: {
             show: true,
@@ -34,14 +44,14 @@ export default function PriceGraph(props) {
             colors: ["#4C505E", "#AEAEAE"],
         },
         markers: {
-            size: 5,
+            size: 0,
             strokeWidth: 3,
             fillOpacity: 0,
             shape: "circle",
             colors: ['#ffffff', '#ffffff'],
             strokeColors: ["#4C505E", "#AEAEAE"],
             hover: {
-                size: 10,
+                size: 0,
                 sizeOffset: 1
             }
         },
@@ -103,7 +113,7 @@ export default function PriceGraph(props) {
                 type="line"
                 options={options}
                 series={series}
-                height={300}
+                height={250}
             />
         </div>
     );
